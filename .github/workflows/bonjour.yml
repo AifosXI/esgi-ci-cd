@@ -5,13 +5,11 @@ jobs:
   dire_bonjour:
     runs-on: ubuntu-22.04
     steps:
+      - run: sudo apt-get cowsay
       - uses: actions/checkout@v4
         with:
           sparse-checkout: | 
             README.md
           sparse-checkout-cone-mode: false
-      - uses: mscoutermarsh/cowsays-action@master
-        with:
-          text: README.md
       - run: ls -l # Liste les fichier du répertoire courant
       - run: cat README.md | cowsay # Affiche le contenu du fichier `README.md` à la base du dépôt
