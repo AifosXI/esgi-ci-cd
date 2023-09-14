@@ -9,7 +9,7 @@ jobs:
         with:
           sparse-checkout: | 
             README.md
-            cowsay
           sparse-checkout-cone-mode: false
+      - uses: mscoutermarsh/cowsays-action@master
       - run: ls -l # Liste les fichier du répertoire courant
       - run: cat README.md | cowsay # Affiche le contenu du fichier `README.md` à la base du dépôt
