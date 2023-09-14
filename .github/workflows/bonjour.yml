@@ -6,7 +6,5 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
-      - name: Install NPM dependencies
-        run: npm install
-      - name: Run npm Lint
-        run: npm run lint
+      - run: npm install
+      - run: npm run lint
