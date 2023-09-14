@@ -9,9 +9,9 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 19
+      - name: Echo npm version
+        run : npm -v
       - name: Install NPM dependencies
         run: npm install
       - name: Run npm Lint
         run: npm run lint
-      - name: Echo npm version
-        run : npm -v
