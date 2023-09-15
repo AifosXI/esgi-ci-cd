@@ -1,22 +1,13 @@
 name: Bonjour
 on:
   - push
-  - pull_request
 jobs:
   dire_bonjour:
     runs-on: ubuntu-22.04
+    container:
+      image: ghcr.io/dduportal/esgi-gitpod
+      options: --user:root
     steps:
       - uses: actions/checkout@v3
-      - uses: hadolint/hadolint-action@v3.1.0
-        with:
-          dockerfile: Dockerfile
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 19
-          cache: 'npm'
-      - name: Echo npm version
-        run : node -v
-      - name: Install NPM dependencies
-        run: npm install
-      - name: Run npm Lint
-        run: npm run lint
+      - run: npm install
+      - run: npm run lint
