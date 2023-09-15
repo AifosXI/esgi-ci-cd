@@ -7,6 +7,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build Image Docker
-      run: docker image build --tag=docker-node:1.0.0 ./
+      run: docker image build --tag=docker-node:1.0.0 ./.github/workflows/
     - name: Run npm lint in container
       run: docker run --rm docker-node:1.0.0 npm run lint
