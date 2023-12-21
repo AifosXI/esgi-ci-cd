@@ -25,3 +25,22 @@ jobs:
         context: ./
         file: ./.github/workflows/Dockerfile
         tags: schaudhryy/sayhello:${{ github.ref_name }}
+
+  create-prerelease:
+    runs-on: ubuntu-20.04
+    needs: dire_bonjour
+    if: startsWith(github.ref, 'refs/heads/main')
+    environment: production
+    steps:
+      - name: Build
+        run: php bin/console cache:clear --env=prod --no-debug --no-warmup
+
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "latest"
+          prerelease: true
+          title: "Development Build"
+          files: |
+            LICENSE.txt
+            *.jar
